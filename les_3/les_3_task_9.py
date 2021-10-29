@@ -18,7 +18,8 @@ for j in range(len(matrix[0])):
 print('-' * 5 * size)
 print(*min_column)
 print('-' * 5 * size)
-summa = 0
+maximum = min_column[0]
 for el in min_column:
-    summa += el
-print(summa)
+    if maximum < el:
+        maximum = el
+print(maximum)
