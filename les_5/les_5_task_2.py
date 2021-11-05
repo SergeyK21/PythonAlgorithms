@@ -72,7 +72,6 @@ def numbers_hex_summa(number_1, number_2):
     :return: deque([])
     """
     if len(number_1) >= len(number_2):
-
         for i in range(len(number_1) - len(number_2)):
             number_2.appendleft('0')
     else:
@@ -80,11 +79,9 @@ def numbers_hex_summa(number_1, number_2):
             number_1.appendleft('0')
     remains = 0
     result = deque()
-    for i in range(len(number_1) - 1, 0, -1):
+    for i in range(len(number_1) - 1, -1, -1):
         result.appendleft(hex_dict[(hex_dict[number_1[i]] + hex_dict[number_2[i]] + remains) % 16])
         remains = (hex_dict[number_1[i]] + hex_dict[number_2[i]] + remains) // 16
-    result.appendleft(hex_dict[(remains + hex_dict[number_1[0]] + hex_dict[number_2[0]]) % 16])
-    remains = (remains + hex_dict[number_1[0]] + hex_dict[number_2[0]]) // 16
     while remains != 0:
         result.appendleft(hex_dict[remains % 16])
         remains = remains // 16
